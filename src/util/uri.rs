@@ -1,9 +1,10 @@
+use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
 use super::base32::decode_secret;
 use super::hashing::HashingAlgorithm;
 
-#[derive(Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct OtpUri {
   pub name: String,
   pub secret: Vec<u8>,
