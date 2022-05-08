@@ -52,9 +52,10 @@ mod test {
     let secret = &token.secret.0;
     let digits = token.digits.expect("!digits");
     let period = token.period.expect("!period");
+    let algo = token.algo.as_ref().expect("!algo");
 
     let time = 1651991203;
 
-    assert_eq!(totp::get_otp(secret, digits, period, time), 982647);
+    assert_eq!(totp::get_otp(secret, algo, digits, period, time), 982647);
   }
 }

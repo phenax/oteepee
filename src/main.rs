@@ -1,4 +1,4 @@
-use oteepee::{otp::totp, util::freeotp};
+use oteepee::{otp::totp, util::freeotp, util::hashing::HashingAlgorithm};
 
 fn main() {
   let json_str =
@@ -12,6 +12,7 @@ fn main() {
 
   let otp = totp::get_otp(
     &item.secret.0,
+    item.algo.as_ref().unwrap_or(&HashingAlgorithm::SHA1),
     item.digits.unwrap_or(6),
     item.period.unwrap_or(30),
     totp::get_current_time(),
