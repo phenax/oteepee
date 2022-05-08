@@ -1,13 +1,13 @@
 use crate::util::{hashing::HashingAlgorithm, secret::*};
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 pub enum OtpType {
   TOTP,
   HOTP,
 }
 
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq)]
 pub struct OtpItem {
   #[serde(rename = "issuerExt")]
   pub issuer_ext: String,

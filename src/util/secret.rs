@@ -1,4 +1,4 @@
-#[derive(Debug, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct OtpSecret(pub Vec<u8>);
 
 impl serde::Serialize for OtpSecret {
