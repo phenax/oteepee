@@ -2,11 +2,7 @@ use serde::{Deserialize, Serialize};
 
 use oteepee::{
   otp::totp,
-  util::{
-    hashing::HashingAlgorithm,
-    secret::*,
-    uri::{parse_otp_uri, OtpUri},
-  },
+  util::{hashing::HashingAlgorithm, secret::*, uri::OtpUri},
 };
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -37,12 +33,12 @@ struct OtpJson {
 
 fn main() {
   let json_str =
-    std::fs::read_to_string("./example.json").expect("Something went wrong reading the file");
+    std::fs::read_to_string("./example.test.json").expect("Something went wrong reading the file");
 
   let serialized: OtpJson = serde_json::from_str(&json_str).unwrap();
 
   let item = &serialized.tokens[0];
-  // let uri = parse_otp_uri(&args[1]).expect("Unable to parse otp uri");
+  // let uri = OtpUri::parse(&args[1]).expect("Unable to parse otp uri");
   // println!("{:?}", uri);
 
   let otp = totp::get_otp(
