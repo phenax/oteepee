@@ -4,7 +4,7 @@ use std::collections::HashMap;
 use super::base32::decode_secret;
 use super::hashing::HashingAlgorithm;
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
 pub struct OtpUri {
   pub name: String,
   pub secret: Vec<u8>,
